@@ -1,0 +1,31 @@
+library (sky130_vsdinv_lib) {
+  delay_model : table_lookup ;
+  time_unit : "1ns" ;
+  voltage_unit : "1V" ;
+  current_unit : "1mA" ;
+  capacitive_load_unit (1,pf);
+  nom_voltage : 3.3 ;
+  nom_temperature : 25 ;
+
+  cell (sky130_vsdinv) {
+    area : 10 ;
+    pin (VPWR) { direction : inout ; }
+    pin (VGND) { direction : inout ; }
+    pin (A) {
+      direction : input ;
+      capacitance : 0.01 ;
+    }
+    pin (Y) {
+      direction : output ;
+      function : "A'" ;
+      timing () {
+        related_pin : "A" ;
+        timing_sense : negative_unate ;
+        cell_rise (scalar) { values("0.12"); }
+        cell_fall (scalar) { values("0.10"); }
+        rise_transition (scalar) { values("0.08"); }
+        fall_transition (scalar) { values("0.07"); }
+      }
+    }
+  }
+}
