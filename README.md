@@ -164,6 +164,16 @@ You can either reuse an existing run directory (`runs/04-07_04-38`) or generate 
 ```tcl
 prep -design picorv32a
 ```
+```bash
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+```
+```bash
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+```
+```bash
+set ::env(SYNTH_SIZING) 1
+```
 
 ---
 
@@ -173,22 +183,216 @@ prep -design picorv32a
 
 ```tcl
 run_synthesis
+28. Printing statistics.
+
+=== picorv32a ===
+
+   Number of wires:              22757
+   Number of wire bits:          23139
+   Number of public wires:        1565
+   Number of public wire bits:    1947
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              23037
+     sky130_fd_sc_hd__a2111o_2       7
+     sky130_fd_sc_hd__a2111oi_2      1
+     sky130_fd_sc_hd__a211o_2       48
+     sky130_fd_sc_hd__a211oi_2       7
+     sky130_fd_sc_hd__a21bo_2       44
+     sky130_fd_sc_hd__a21boi_2     125
+     sky130_fd_sc_hd__a21o_2       582
+     sky130_fd_sc_hd__a21oi_2     1078
+     sky130_fd_sc_hd__a221o_2       82
+     sky130_fd_sc_hd__a221oi_2       4
+     sky130_fd_sc_hd__a22o_2       226
+     sky130_fd_sc_hd__a22oi_2      305
+     sky130_fd_sc_hd__a2bb2o_2      24
+     sky130_fd_sc_hd__a2bb2oi_2     17
+     sky130_fd_sc_hd__a311o_2       17
+     sky130_fd_sc_hd__a31o_2        95
+     sky130_fd_sc_hd__a31oi_2       95
+     sky130_fd_sc_hd__a32o_2        41
+     sky130_fd_sc_hd__a32oi_2       15
+     sky130_fd_sc_hd__a41o_2        11
+     sky130_fd_sc_hd__a41oi_2        5
+     sky130_fd_sc_hd__and2_2       492
+     sky130_fd_sc_hd__and2b_2       23
+     sky130_fd_sc_hd__and3_2       411
+     sky130_fd_sc_hd__and3b_2        7
+     sky130_fd_sc_hd__and4_2        76
+     sky130_fd_sc_hd__and4b_2        3
+     sky130_fd_sc_hd__buf_1       1644
+     sky130_fd_sc_hd__buf_2         14
+     sky130_fd_sc_hd__conb_1        42
+     sky130_fd_sc_hd__dfxtp_2     1613
+     sky130_fd_sc_hd__inv_2         98
+     sky130_fd_sc_hd__mux2_1      1224
+     sky130_fd_sc_hd__mux2_2       902
+     sky130_fd_sc_hd__mux4_1       221
+     sky130_fd_sc_hd__nand2_2     3394
+     sky130_fd_sc_hd__nand2b_2       1
+     sky130_fd_sc_hd__nand3_2     2128
+     sky130_fd_sc_hd__nand3b_2     317
+     sky130_fd_sc_hd__nor2_2      1887
+     sky130_fd_sc_hd__nor2b_2       10
+     sky130_fd_sc_hd__nor3_2        61
+     sky130_fd_sc_hd__nor3b_2        7
+     sky130_fd_sc_hd__o2111a_2      15
+     sky130_fd_sc_hd__o2111ai_2     74
+     sky130_fd_sc_hd__o211a_2      338
+     sky130_fd_sc_hd__o211ai_2     249
+     sky130_fd_sc_hd__o21a_2       156
+     sky130_fd_sc_hd__o21ai_2     1040
+     sky130_fd_sc_hd__o21ba_2       17
+     sky130_fd_sc_hd__o21bai_2     151
+     sky130_fd_sc_hd__o221a_2       44
+     sky130_fd_sc_hd__o221ai_2      11
+     sky130_fd_sc_hd__o22a_2        38
+     sky130_fd_sc_hd__o22ai_2      264
+     sky130_fd_sc_hd__o2bb2a_2      25
+     sky130_fd_sc_hd__o2bb2ai_2    323
+     sky130_fd_sc_hd__o311a_2        3
+     sky130_fd_sc_hd__o311ai_2       2
+     sky130_fd_sc_hd__o31a_2        14
+     sky130_fd_sc_hd__o31ai_2        4
+     sky130_fd_sc_hd__o32a_2        12
+     sky130_fd_sc_hd__o32ai_2        2
+     sky130_fd_sc_hd__or2_2        387
+     sky130_fd_sc_hd__or2b_2        29
+     sky130_fd_sc_hd__or3_2         64
+     sky130_fd_sc_hd__or3b_2        10
+     sky130_fd_sc_hd__or4_2         70
+     sky130_fd_sc_hd__or4b_2         3
+     sky130_fd_sc_hd__xnor2_2       36
+     sky130_fd_sc_hd__xor2_2        86
+     sky130_vsdinv                2166
+
+   Chip area for module '\picorv32a': 209181.872000
+
+29. Executing Verilog backend.
+Dumping module `\picorv32a'.
+
+Warnings: 307 unique messages, 307 total
+End of script. Logfile hash: da0220ae91, CPU: user 34.64s system 0.37s, MEM: 99.04 MB peak
+Yosys 0.9+3621 (git sha1 84e9fa7, gcc 8.3.1 -fPIC -Os)
+Time spent: 75% 2x abc (102 sec), 6% 33x opt_expr (8 sec), ...
+[INFO]: Changing netlist from 0 to /openLANE_flow/designs/picorv32a/runs/05-07_15-41/results/synthesis/picorv32a.synthesis.v
+[INFO]: Running Static Timing Analysis...
+# TODO set this as parameter
+set_driving_cell -lib_cell $::env(SYNTH_DRIVING_CELL) -pin $::env(SYNTH_DRIVING_CELL_PIN) [all_inputs]
+set cap_load [expr $::env(SYNTH_CAP_LOAD) / 1000.0]
+puts "\[INFO\]: Setting load to: $cap_load"
+[INFO]: Setting load to: 0.01765
+set_load  $cap_load [all_outputs]
+Startpoint: resetn (input port clocked by clk)
+Endpoint: _42736_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+----------------------------------------------------------------------------
+                 0.00    0.00    0.00   clock clk (rise edge)
+                         0.00    0.00   clock network delay (ideal)
+                         0.00    0.00 ^ input external delay
+                 0.02    0.01    0.01 ^ resetn (in)
+    5    0.01                           resetn (net)
+                 0.02    0.00    0.01 ^ _41347_/S (sky130_fd_sc_hd__mux2_1)
+                 0.02    0.07    0.08 ^ _41347_/X (sky130_fd_sc_hd__mux2_1)
+    1    0.00                           _00003_ (net)
+                 0.02    0.00    0.08 ^ _42736_/D (sky130_fd_sc_hd__dfxtp_2)
+                                 0.08   data arrival time
+
+                 0.00    0.00    0.00   clock clk (rise edge)
+                         0.00    0.00   clock network delay (ideal)
+                         0.00    0.00   clock reconvergence pessimism
+                                 0.00 ^ _42736_/CLK (sky130_fd_sc_hd__dfxtp_2)
+                        -0.02   -0.02   library hold time
+                                -0.02   data required time
+----------------------------------------------------------------------------
+                                -0.02   data required time
+                                -0.08   data arrival time
+----------------------------------------------------------------------------
+                                 0.09   slack (MET)
+
+
+Startpoint: _42923_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _42703_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+----------------------------------------------------------------------------
+                 0.00    0.00    0.00   clock clk (rise edge)
+                         0.00    0.00   clock network delay (ideal)
+                 0.00    0.00    0.00 ^ _42923_/CLK (sky130_fd_sc_hd__dfxtp_2)
+                 1.01    1.31    1.31 ^ _42923_/Q (sky130_fd_sc_hd__dfxtp_2)
+   39    0.13                           cpu_state[3] (net)
+                 1.01    0.00    1.31 ^ _42093_/S (sky130_fd_sc_hd__mux2_1)
+                 8.52    6.56    7.86 ^ _42093_/X (sky130_fd_sc_hd__mux2_1)
+  161    0.63                           _00357_ (net)
+                 8.52    0.00    7.86 ^ _42583_/S0 (sky130_fd_sc_hd__mux4_1)
+                 0.18    2.51   10.37 v _42583_/X (sky130_fd_sc_hd__mux4_1)
+    1    0.00                           _00361_ (net)
+                 0.18    0.00   10.37 v _42586_/A1 (sky130_fd_sc_hd__mux4_1)
+                 0.14    1.14   11.51 v _42586_/X (sky130_fd_sc_hd__mux4_1)
+    1    0.00                           _00365_ (net)
+                 0.14    0.00   11.51 v _42088_/A1 (sky130_fd_sc_hd__mux2_1)
+                 0.13    0.70   12.22 v _42088_/X (sky130_fd_sc_hd__mux2_1)
+    1    0.00                           _00370_ (net)
+                 0.13    0.00   12.22 v _21612_/B (sky130_fd_sc_hd__nand2_2)
+                 0.11    0.16   12.38 ^ _21612_/Y (sky130_fd_sc_hd__nand2_2)
+    3    0.01                           _18851_ (net)
+                 0.11    0.00   12.38 ^ _26230_/B2 (sky130_fd_sc_hd__o221a_2)
+                 0.07    0.37   12.75 ^ _26230_/X (sky130_fd_sc_hd__o221a_2)
+    1    0.00                           _01718_ (net)
+                 0.07    0.00   12.75 ^ _41953_/A0 (sky130_fd_sc_hd__mux2_1)
+                 0.07    0.21   12.96 ^ _41953_/X (sky130_fd_sc_hd__mux2_1)
+    1    0.00                           _01719_ (net)
+                 0.07    0.00   12.96 ^ _26238_/A1_N (sky130_fd_sc_hd__a2bb2o_2)
+                 0.08    0.52   13.47 v _26238_/X (sky130_fd_sc_hd__a2bb2o_2)
+    1    0.00                           _04123_ (net)
+                 0.08    0.00   13.47 v _26239_/C1 (sky130_fd_sc_hd__a311o_2)
+                 0.08    0.56   14.04 v _26239_/X (sky130_fd_sc_hd__a311o_2)
+    1    0.00                           _01720_ (net)
+                 0.08    0.00   14.04 v _41548_/A0 (sky130_fd_sc_hd__mux2_1)
+                 0.10    0.61   14.65 v _41548_/X (sky130_fd_sc_hd__mux2_1)
+    1    0.00                           _21109_ (net)
+                 0.10    0.00   14.65 v _42703_/D (sky130_fd_sc_hd__dfxtp_2)
+                                14.65   data arrival time
+
+                 0.00   12.00   12.00   clock clk (rise edge)
+                         0.00   12.00   clock network delay (ideal)
+                         0.00   12.00   clock reconvergence pessimism
+                                12.00 ^ _42703_/CLK (sky130_fd_sc_hd__dfxtp_2)
+                        -0.31   11.69   library setup time
+                                11.69   data required time
+----------------------------------------------------------------------------
+                                11.69   data required time
+                               -14.65   data arrival time
+----------------------------------------------------------------------------
+                                -2.95   slack (VIOLATED)
+
+
+tns -266.40
+wns -2.95
+[INFO]: Synthesis was successful
 ```
 
 🔹 Converts RTL (Verilog) into a gate-level netlist using a standard cell library.
 🔹 Performs optimizations and maps the logic to physical cells.
 
-![Synthesis Screenshot](https://github.com/user-attachments/assets/318a74f9-e65a-4363-8431-8224dc075f5c)
-
 ---
 
 ### 2️⃣ Floorplanning and IO Placement
+
 
 ```tcl
 init_floorplan
 place_io
 tap_decap_or
 ```
+
 
 🔹 Creates a chip outline, defines core area and margins.
 🔹 Places IO pins around the core.
@@ -198,13 +402,14 @@ tap_decap_or
 
 ### 3️⃣ Placement
 
+Running placement
 ```tcl
 run_placement
 ```
 
 🔹 Automatically places standard cells within the floorplan.
 
-![Placement Screenshot](https://github.com/user-attachments/assets/30c5d698-3a30-4de7-ba4b-3b165975004e)
+![Placement Screenshot](images/placement.png)
 
 ---
 
@@ -234,8 +439,8 @@ gen_pdn
 View PDN in Magic:
 
 ```bash
-cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/21-02-25/tmp/floorplan/
-magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech \
+cd home/VLSI/openlane_working_dir/openlane/designs/picorv32a/runs/04-07_04-38/tmp/floorplan/
+magic -T home/VLSI/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech \
 lef read ../../tmp/merged.lef def read 14-pdn.def &
 ```
 
@@ -253,40 +458,27 @@ run_routing
 To view routed DEF in Magic:
 
 ```bash
-cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/21-01_15-14/results/routing/
-magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech \
+cd home/VLSI/openlane_working_dir/openlane/designs/picorv32a/runs/04-07_04-38/results/routing/
+magic -T home/VLSI/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech \
 lef read ../../tmp/merged.lef def read picorv32a.def &
 ```
 
----
 
-## 🧲 Post-Route Parasitic Extraction (Optional)
-
-Use [SPEF Extractor](https://github.com/HanyMoussa/SPEF_EXTRACTOR):
-
-```bash
-cd Desktop/work/tools/SPEF_EXTRACTOR
-python3 main.py \
-~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/tmp/merged.lef \
-~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-03_08-45/results/routing/picorv32a.def
-```
-
----
 
 ## ⏱️ Post-Route Timing Analysis with OpenSTA
 
 ```tcl
 openroad
-read_lef /openLANE_flow/designs/picorv32a/runs/26-03_08-45/tmp/merged.lef
-read_def /openLANE_flow/designs/picorv32a/runs/26-03_08-45/results/routing/picorv32a.def
+read_lef /openLANE_flow/designs/picorv32a/runs/04-07_04-38/tmp/merged.lef
+read_def /openLANE_flow/designs/picorv32a/runs/04-07_04-38/results/routing/picorv32a.def
 write_db pico_route.db
 read_db pico_route.db
-read_verilog /openLANE_flow/designs/picorv32a/runs/26-03_08-45/results/synthesis/picorv32a.synthesis_preroute.v
+read_verilog /openLANE_flow/designs/picorv32a/runs/04-07_04-38/results/synthesis/picorv32a.synthesis_preroute.v
 read_liberty $::env(LIB_SYNTH_COMPLETE)
 link_design picorv32a
 read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
 set_propagated_clock [all_clocks]
-read_spef /openLANE_flow/designs/picorv32a/runs/26-03_08-45/results/routing/picorv32a.spef
+read_spef /openLANE_flow/designs/picorv32a/runs/04-07_04-38/results/routing/picorv32a.spef
 report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
 exit
 ```
@@ -300,7 +492,7 @@ exit
 
 ## 🎯 Final Layout View
 
-![Final Layout](https://github.com/user-attachments/assets/4082fb14-dd93-4227-a6fe-9635cccb1609)
+![Final Layout](Images/layout.png)
 
 ---
 
