@@ -1,0 +1,43 @@
+* CMOS Inverter Transient Simulation
+
+.option scale=0.01u               * All dimensions in 10nm units
+.include ./libs/pshort.lib        * PMOS model
+.include ./libs/nshort.lib        * NMOS model
+
+* PMOS: Y = output, A = gate, VPWR = source & bulk
+M1 Y A VPWR VPWR pshort_model.0 w=37 l=23
++ ad=1443 pd=152 as=1517 ps=156
+
+
+* NMOS: Y = output, A = gate, VGND = source & bulk
+M2 Y A VGND VGND nshort_model.0 w=37 l=23
++ ad=1435 pd=152 as=1365 ps=148
+
+
+* Power supplies
+VDD  VPWR  0  3.3V
+Rgnd VGND  0  1m         * Small resistor to ground to avoid floating VGND
+Rstab VPWR VGND 1G       * Helps DC convergence
+
+* Input pulse generator
+Va   vin 0 PULSE(0 3.3 1n 0.1n 0.1n 2n 4n) DC 0
+Rin  vin A 10             * Drive gate strongly
+
+* Capacitive loads to model parasitics
+C0 A Y 0.05f
+C1 Y VPWR 0.11f
+C2 A VPWR 0.07f
+C3 Y 0 7f
+C4 VPWR 0 0.59f
+
+
+* Transient analysis
+.tran 1n 20n         * Start without initial DC point
+
+* Simulation commands
+.control
+
+run
+.endc
+
+.end
