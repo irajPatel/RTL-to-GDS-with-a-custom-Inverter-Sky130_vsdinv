@@ -374,17 +374,14 @@ exit
 
 ## 🎯 Final Layout View
 
-![Final Layout](Images/layout.png)
+![Final Layout](Images/picorv32a.def.png)
 
 ---
 
-✅ With this flow, your custom inverter is successfully integrated into a real RISC-V design and taped out to GDSII using industry-standard open-source tools.
+
 
 
 
 ```
 
----
 
-Would you like me to include **Part 2** as well in the same style (integration into OpenLane and PicoRV32 RTL-to-GDS flow)?
-```
