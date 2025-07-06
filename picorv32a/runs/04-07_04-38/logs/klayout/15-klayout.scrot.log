@@ -1,0 +1,6 @@
+Using Techfile: /home/iraj/VLSI/openlane_working_dir/openlane/pdks/sky130A/libs.tech/klayout/sky130A.lyt
+Using layout file: /openLANE_flow/designs/picorv32a/runs/04-07_04-38/results/cts/picorv32a.cts.def
+[INFO] Reading tech file: /home/iraj/VLSI/openlane_working_dir/openlane/pdks/sky130A/libs.tech/klayout/sky130A.lyt
+[INFO] Reading Layout file: /openLANE_flow/designs/picorv32a/runs/04-07_04-38/results/cts/picorv32a.cts.def
+[INFO] Writing out PNG screenshot '/openLANE_flow/designs/picorv32a/runs/04-07_04-38/results/cts/picorv32a.cts.def.png'
+Done

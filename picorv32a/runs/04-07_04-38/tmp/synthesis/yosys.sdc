@@ -1,0 +1,2 @@
+set_driving_cell sky130_fd_sc_hd__inv_16
+set_load 17.65

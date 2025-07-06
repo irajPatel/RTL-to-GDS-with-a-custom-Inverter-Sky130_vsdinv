@@ -1,0 +1,17 @@
+0-prep 2.578
+1-yosys 113.821
+2-opensta 2.512
+3-opensta 2.548
+4-opensta 2.505
+5-verilog2def_openroad 3.099
+6-ioPlacer 2.215
+7-tapcell 3.173
+8-replace 24.147
+8-resizer 19.989
+9-write_verilog 2.128
+10-opensta_post_resizer 2.564
+11-opendp 3.759
+12-klayout_scrot 8.742
+13-cts 151.208
+14-write_verilog 2.302
+15-klayout_scrot 7.993
