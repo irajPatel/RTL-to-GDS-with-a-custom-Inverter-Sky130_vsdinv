@@ -34,7 +34,7 @@ The RTL to GDSII flow is like a pipeline where your design goes through multiple
 ### 🌀 The Y-Chart: Three Dimensions of Design
 
 The **Y-Chart** is a fundamental concept in VLSI showing how design flows through three interconnected domains:
-
+ 
 ```mermaid
 graph TD
     A[Behavioral Domain<br/>What it does] --> D[Design Flow]
