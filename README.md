@@ -1,7 +1,4 @@
-# 🚀  VSD RISC-V SoC Tapeout & Physical Design
-
-
-
+# 🛠️ RTL to GDSII Flow with Custom Inverter Cell on Sky130 & PicoRV32 Integration
 
 <summary>🧠 Day 1 — Foundation of Open-Source Silicon</summary>
 <br>
@@ -3224,6 +3221,9 @@ VIAS <count>            # Inter-layer vias
 | **DRC Clean** | Ensures fabrication success |
 
 ---
+
+
+
 
 
 
